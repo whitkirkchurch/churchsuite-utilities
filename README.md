@@ -70,7 +70,7 @@ for event in events:
   print(event.naive_datetime_start)
 ```
 
-These objects are naive, without any timezone information (ie they are always in the _local_ time of the even, which can cause problems when straddling daylight saving boundaries). You can interpret them through the lens of the timezone provided to the `Account` object using `localised_datetime_start`.
+These objects are naive, without any timezone information (ie they are always in the _local_ time of the event, which can cause problems when straddling daylight saving boundaries). You can interpret them through the lens of the timezone provided to the `Account` object using `localised_datetime_start`.
 
 ``` python
 for event in events:
