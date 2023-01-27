@@ -1,8 +1,8 @@
-from pathlib import Path
 import json
-import pytz
-
 from datetime import datetime
+from pathlib import Path
+
+import pytz
 
 from churchsuite import events
 
