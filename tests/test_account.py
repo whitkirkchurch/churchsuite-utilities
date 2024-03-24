@@ -20,10 +20,12 @@ def test_calendar_json_url():
 
 @requests_mock.Mocker(kw="mock")
 def test_get_public_events_response(**kwargs):
-    f = open(Path(__file__).with_name("churchsuite_response.json"))
-    data = f.read()
+    with open(Path(__file__).with_name("churchsuite_response.json")) as f:
+        data = f.read()
 
-    kwargs["mock"].get("https://test.churchsuite.com/embed/calendar/json", text=data)
-    cs = churchsuite.Account("test")
+        kwargs["mock"].get(
+            "https://test.churchsuite.com/embed/calendar/json", text=data
+        )
+        cs = churchsuite.Account("test")
 
-    assert cs.get_public_events_response() == json.loads(data)
+        assert cs.get_public_events_response() == json.loads(data)
