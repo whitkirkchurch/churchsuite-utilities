@@ -3,14 +3,13 @@ from datetime import datetime
 from pathlib import Path
 
 import pytz
-
 from churchsuite import events
 
 
 def event_factory():
-    f = open(Path(__file__).with_name("churchsuite_response.json"))
-    data = json.load(f)
-    return events.Event(data[0], pytz.timezone("Europe/London"))
+    with open(Path(__file__).with_name("churchsuite_response.json")) as f:
+        data = json.load(f)
+        return events.Event(data[0], pytz.timezone("Europe/London"))
 
 
 def test_id():
@@ -34,7 +33,7 @@ def test_naive_datetime_start():
 def test_localised_datetime_start_has_timezone():
     event = event_factory()
 
-    assert event.localised_datetime_start.tzinfo != None
+    assert event.localised_datetime_start.tzinfo is not None
 
 
 def test_localised_datetime_start_is_correct():

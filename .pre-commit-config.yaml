@@ -6,12 +6,28 @@ repos:
       - id: end-of-file-fixer
       - id: check-yaml
 
-  - repo: https://github.com/psf/black
-    rev: 24.1.1
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.3.4
     hooks:
-      - id: black
+      - id: ruff
+        args: [--fix]
+      - id: ruff-format
 
-  - repo: https://github.com/PyCQA/isort
-    rev: 5.13.2
+    # Check the library itself in strict mode
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.9.0
     hooks:
-      - id: isort
+      - id: mypy
+        name: mypy-src
+        additional_dependencies: [types-requests, types-pytz]
+        files: ^src/
+        args: ["--strict"]
+
+  # Check the tests in regular mode
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.9.0
+    hooks:
+      - id: mypy
+        name: mypy-tests
+        additional_dependencies: [types-requests, types-pytz]
+        files: ^tests/

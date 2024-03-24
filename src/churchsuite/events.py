@@ -1,26 +1,31 @@
 from datetime import datetime
+from typing import TypedDict
+
+from pytz.tzinfo import BaseTzInfo
+
+
+class ChurchSuiteEventDict(TypedDict, total=False):
+    id: str
+    datetime_start: str
 
 
 class Event:
-    def __init__(self, object, timezone):
+    def __init__(self, object: ChurchSuiteEventDict, timezone: BaseTzInfo) -> None:
         self.object = object
         self.timezone = timezone
 
-    def get_field(self, field):
-        return self.object[field]
+    @property
+    def id(self) -> str:
+        return self.object["id"]
 
     @property
-    def id(self):
-        return self.get_field("id")
+    def datetime_start(self) -> str:
+        return self.object["datetime_start"]
 
     @property
-    def datetime_start(self):
-        return self.get_field("datetime_start")
-
-    @property
-    def naive_datetime_start(self):
+    def naive_datetime_start(self) -> datetime:
         return datetime.strptime(self.datetime_start, "%Y-%m-%d %H:%M:%S")
 
     @property
-    def localised_datetime_start(self):
+    def localised_datetime_start(self) -> datetime:
         return self.timezone.localize(self.naive_datetime_start)
