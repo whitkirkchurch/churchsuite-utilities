@@ -1,22 +1,16 @@
-from typing import Any, Optional, TypedDict
+from typing import Any, Optional
 
 import pytz
 import requests
 from pytz.tzinfo import BaseTzInfo
 
-from . import events
-from .events import Event
+from churchsuite.events import ChurchSuiteEventDict, Event
 
 CHURCHSUITE_BASE_DOMAIN = "churchsuite.com"
 
 TZ_LONDON: BaseTzInfo = pytz.timezone("Europe/London")
 
 ChurchSuiteEventsParametersDict = dict[str, Any]
-
-
-class ChurchSuiteEventDict(TypedDict, total=False):
-    id: str
-    datetime_start: str
 
 
 class Account:
@@ -45,4 +39,4 @@ class Account:
         self, params: Optional[ChurchSuiteEventsParametersDict] = None
     ) -> list[Event]:
         response = self.get_public_events_response(params)
-        return [events.Event(e, self.account_timezone) for e in response]
+        return [Event(e, self.account_timezone) for e in response]

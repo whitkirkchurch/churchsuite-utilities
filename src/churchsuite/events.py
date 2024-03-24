@@ -1,8 +1,12 @@
 from datetime import datetime
+from typing import TypedDict
 
 from pytz.tzinfo import BaseTzInfo
 
-from . import ChurchSuiteEventDict
+
+class ChurchSuiteEventDict(TypedDict, total=False):
+    id: str
+    datetime_start: str
 
 
 class Event:
