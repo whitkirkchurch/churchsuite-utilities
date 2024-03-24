@@ -34,7 +34,7 @@ def test_naive_datetime_start():
 def test_localised_datetime_start_has_timezone():
     event = event_factory()
 
-    assert event.localised_datetime_start.tzinfo != None
+    assert event.localised_datetime_start.tzinfo is not None
 
 
 def test_localised_datetime_start_is_correct():
