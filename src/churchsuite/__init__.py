@@ -43,6 +43,6 @@ class Account:
 
     def get_public_events(
         self, params: Optional[ChurchSuiteEventsParametersDict] = None
-    ) -> map[Event]:
+    ) -> list[Event]:
         response = self.get_public_events_response(params)
-        return map(lambda e: events.Event(e, self.account_timezone), response)
+        return [events.Event(e, self.account_timezone) for e in response]
