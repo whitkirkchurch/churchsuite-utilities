@@ -12,3 +12,22 @@ repos:
       - id: ruff
         args: [--fix]
       - id: ruff-format
+
+    # Check the library itself in strict mode
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.9.0
+    hooks:
+      - id: mypy
+        name: mypy-src
+        additional_dependencies: [types-requests, types-pytz]
+        files: ^src/
+        args: ["--strict"]
+
+  # Check the tests in regular mode
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.9.0
+    hooks:
+      - id: mypy
+        name: mypy-tests
+        additional_dependencies: [types-requests, types-pytz]
+        files: ^tests/
