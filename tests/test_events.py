@@ -8,9 +8,9 @@ from churchsuite import events
 
 
 def event_factory():
-    f = open(Path(__file__).with_name("churchsuite_response.json"))
-    data = json.load(f)
-    return events.Event(data[0], pytz.timezone("Europe/London"))
+    with open(Path(__file__).with_name("churchsuite_response.json")) as f:
+        data = json.load(f)
+        return events.Event(data[0], pytz.timezone("Europe/London"))
 
 
 def test_id():
