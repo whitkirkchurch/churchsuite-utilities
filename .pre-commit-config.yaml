@@ -19,7 +19,14 @@ repos:
     hooks:
       - id: mypy
         name: mypy-src
-        additional_dependencies: [types-requests, types-pytz]
+        additional_dependencies:
+          [
+            types-requests,
+            types-pytz,
+            types-Markdown,
+            types-python-dateutil,
+            datetype,
+          ]
         files: ^src/
         args: ["--strict"]
 
