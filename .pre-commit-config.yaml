@@ -15,7 +15,7 @@ repos:
 
     # Check the library itself in strict mode
   - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v1.10.0
+    rev: v1.10.1
     hooks:
       - id: mypy
         name: mypy-src
@@ -25,7 +25,7 @@ repos:
 
   # Check the tests in regular mode
   - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v1.10.0
+    rev: v1.10.1
     hooks:
       - id: mypy
         name: mypy-tests
