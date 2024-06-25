@@ -3,10 +3,95 @@
         "id": 1127446,
         "identifier": "dzag26hw",
         "sequence": null,
-        "name": "Serve the City",
-        "datetime_start": "2022-02-14 00:00:00",
-        "datetime_end": "2022-02-14 23:59:59",
+        "name": "An event in BST",
+        "datetime_start": "2022-08-14 18:00:00",
+        "datetime_end": "2022-08-14 22:30:00",
         "description": "A great mission opportunity",
+        "category": {
+            "id": 38,
+            "name": "City Outreach 620a1b75ea829",
+            "color": "#ff69b4"
+        },
+        "status": "confirmed",
+        "visible_to": [],
+        "brand": [],
+        "capacity": null,
+        "images": [],
+        "location": {
+            "address": null,
+            "latitude": null,
+            "longitude": null,
+            "name": null,
+            "type": "physical",
+            "url": null
+        },
+        "signup_options": {
+            "notification": "0",
+            "connect": {
+                "visible": "1"
+            },
+            "embed": {
+                "visible": "1",
+                "enabled": "1"
+            },
+            "public": {
+                "visible": "1",
+                "enabled": "1",
+                "featured": "1"
+            },
+            "sequence_signup": "0",
+            "signup_cancel": "1",
+            "signup_enabled": "1",
+            "tickets": {
+                "enabled": "1",
+                "url": "https:\/\/demo.churchsuite.com\/events\/dzag26hw"
+            },
+            "visible_to_tags": [],
+            "fixed_questions": {
+                "name": {
+                    "name": "Name",
+                    "response_type": "Text",
+                    "required": true,
+                    "hidden": false
+                },
+                "email": {
+                    "name": "Email",
+                    "response_type": "Email",
+                    "required": "first",
+                    "hidden": false
+                },
+                "mobile": {
+                    "name": "Phone",
+                    "response_type": "Phone",
+                    "required": false,
+                    "hidden": false
+                },
+                "notes": {
+                    "name": "Notes",
+                    "response_type": "Paragraph",
+                    "required": false,
+                    "hidden": false
+                }
+            }
+        },
+        "site": null,
+        "pin": 625232,
+        "invite_hash": null,
+        "public_visible": true,
+        "mtime": "2022-02-14 09:05:58",
+        "muser": "import",
+        "ctime": "2022-02-14 09:05:58",
+        "cuser": "import",
+        "merged_by_strategy": false
+    },
+    {
+        "id": 1127447,
+        "identifier": "dzag26hx",
+        "sequence": null,
+        "name": "An event in BST",
+        "datetime_start": "2022-02-14 18:00:00",
+        "datetime_end": "2022-02-14 22:30:00",
+        "description": "An event in GMT",
         "category": {
             "id": 38,
             "name": "City Outreach 620a1b75ea829",
