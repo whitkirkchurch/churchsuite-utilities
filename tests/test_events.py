@@ -3,6 +3,7 @@ from datetime import datetime
 from pathlib import Path
 
 import pytz
+
 from churchsuite import events
 
 

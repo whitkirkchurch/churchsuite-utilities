@@ -1,8 +1,9 @@
 import json
 from pathlib import Path
 
-import churchsuite
 import requests_mock
+
+import churchsuite
 
 
 def test_base_url():
