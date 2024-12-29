@@ -1,12 +1,51 @@
 from datetime import datetime
-from typing import TypedDict
+from typing import Literal, TypedDict
 
 from pytz.tzinfo import BaseTzInfo
 
 
+class ChurchSuiteCategoryDict(TypedDict):
+    """https://github.com/ChurchSuite/churchsuite-api/blob/master/modules/embed.md"""
+
+    id: int
+    name: str
+    color: str
+
+
+class ChurchSuiteImageDict(TypedDict):
+    """https://github.com/ChurchSuite/churchsuite-api/blob/master/patterns/images.md"""
+
+    px: int
+    square: bool
+    transparent: bool
+    mtime: int
+    url: str
+
+
+class ChurchSuiteImagesDict(TypedDict):
+    """https://github.com/ChurchSuite/churchsuite-api/blob/master/patterns/images.md"""
+
+    thumb: ChurchSuiteImageDict
+    sm: ChurchSuiteImageDict
+    md: ChurchSuiteImageDict
+    lg: ChurchSuiteImageDict
+    original_16: str
+    original_100: str
+    original_500: str
+    original_1000: str
+    square_16: str
+    square_100: str
+
+
 class ChurchSuiteEventDict(TypedDict, total=False):
+    """https://github.com/ChurchSuite/churchsuite-api/blob/master/modules/embed.md"""
+
     id: str
     datetime_start: str
+    name: str
+    category: ChurchSuiteCategoryDict
+    status: Literal["confirmed", "pending", "cancelled"]
+    images: ChurchSuiteImagesDict
 
 
 class Event:
