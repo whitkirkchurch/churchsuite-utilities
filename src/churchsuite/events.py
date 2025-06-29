@@ -37,6 +37,17 @@ class ChurchSuiteImagesDict(TypedDict):
     square_100: str
 
 
+class ChurchSuiteLocationDict(TypedDict):
+    """https://github.com/ChurchSuite/churchsuite-api/blob/master/modules/embed.md"""
+
+    address: str
+    latitude: str
+    longitude: str
+    name: str
+    type: str
+    url: str
+
+
 class ChurchSuiteEventDict(TypedDict, total=False):
     """https://github.com/ChurchSuite/churchsuite-api/blob/master/modules/embed.md"""
 
@@ -46,6 +57,7 @@ class ChurchSuiteEventDict(TypedDict, total=False):
     category: ChurchSuiteCategoryDict
     status: Literal["confirmed", "pending", "cancelled"]
     images: ChurchSuiteImagesDict
+    location: ChurchSuiteLocationDict
 
 
 class Event:
