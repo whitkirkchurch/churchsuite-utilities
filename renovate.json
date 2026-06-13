@@ -1,4 +1,12 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["github>whitkirkchurch/renovate-config"]
+  "extends": ["github>whitkirkchurch/renovate-config"],
+  "rangeStrategy": "widen",
+  "packageRules": [
+    {
+      "matchManagers": ["poetry"],
+      "matchDepTypes": ["dev"],
+      "rangeStrategy": "pin"
+    }
+  ]
 }
