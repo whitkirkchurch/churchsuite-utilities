@@ -1,4 +1,4 @@
-from typing import Any, Optional
+from typing import Any
 
 import pytz
 import requests
@@ -27,7 +27,7 @@ class Account:
         return f"{self.base_url}/embed/calendar/json"
 
     def get_public_events_response(
-        self, params: Optional[ChurchSuiteEventsParametersDict] = None
+        self, params: ChurchSuiteEventsParametersDict | None = None
     ) -> list[ChurchSuiteEventDict]:
         if not params:
             params = {}
@@ -36,7 +36,7 @@ class Account:
         return parsed_response
 
     def get_public_events(
-        self, params: Optional[ChurchSuiteEventsParametersDict] = None
+        self, params: ChurchSuiteEventsParametersDict | None = None
     ) -> list[Event]:
         response = self.get_public_events_response(params)
         return [Event(e, self.account_timezone) for e in response]
