@@ -38,3 +38,15 @@ repos:
         name: mypy-tests
         additional_dependencies: [types-requests, types-pytz]
         files: ^tests/
+
+  - repo: https://github.com/renovatebot/pre-commit-hooks
+    rev: 43.214.6
+    hooks:
+      - id: renovate-config-validator
+        args: [--strict]
+        files: ^renovate\.json$
+
+  - repo: https://github.com/woodruffw/zizmor-pre-commit
+    rev: v1.25.2
+    hooks:
+      - id: zizmor
