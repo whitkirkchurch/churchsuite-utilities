@@ -93,3 +93,35 @@ def test_localised_datetime_renders_correctly_in_gmt():
         event.localised_datetime_start.strftime("%Y-%m-%d %H:%M:%S")
         == "2022-02-14 18:00:00"
     )
+
+
+def test_datetime_end():
+    event = events_factory()[0]
+
+    assert event.datetime_end == "2022-08-14 22:30:00"
+
+
+def test_naive_datetime_end():
+    event = events_factory()[0]
+
+    assert event.naive_datetime_end == datetime(2022, 8, 14, 22, 30)
+
+
+def test_localised_datetime_end():
+    event = events_factory()[0]
+
+    assert event.localised_datetime_end.replace(tzinfo=None) == datetime(
+        2022, 8, 14, 22, 30
+    )
+
+
+def test_is_all_day_false_for_timed_event():
+    event = events_factory()[0]
+
+    assert event.is_all_day is False
+
+
+def test_is_all_day_true_for_midnight_to_end_of_day_event():
+    event = events_factory()[2]
+
+    assert event.is_all_day is True

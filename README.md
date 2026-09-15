@@ -76,3 +76,12 @@ These objects are naive, without any timezone information (ie they are always in
 for event in events:
   print(event.localised_datetime_start)
 ```
+
+The same helpers exist for the end of the event (`naive_datetime_end`, `localised_datetime_end`).
+
+The legacy embed calendar JSON feed has no all-day flag. `is_all_day` is `True` when ChurchSuite encodes the event as local midnight through `23:59:59` (including multi-day all-day events).
+
+``` python
+for event in events:
+  print(event.is_all_day)
+```
