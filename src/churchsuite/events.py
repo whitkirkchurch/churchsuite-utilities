@@ -53,6 +53,7 @@ class ChurchSuiteEventDict(TypedDict, total=False):
 
     id: str
     datetime_start: str
+    datetime_end: str
     name: str
     category: ChurchSuiteCategoryDict
     status: Literal["confirmed", "pending", "cancelled"]
@@ -80,3 +81,32 @@ class Event:
     @property
     def localised_datetime_start(self) -> datetime:
         return self.timezone.localize(self.naive_datetime_start)
+
+    @property
+    def datetime_end(self) -> str:
+        return self.object["datetime_end"]
+
+    @property
+    def naive_datetime_end(self) -> datetime:
+        return datetime.strptime(self.datetime_end, "%Y-%m-%d %H:%M:%S")
+
+    @property
+    def localised_datetime_end(self) -> datetime:
+        return self.timezone.localize(self.naive_datetime_end)
+
+    @property
+    def is_all_day(self) -> bool:
+        """
+        The legacy embed calendar JSON feed has no all-day flag. ChurchSuite
+        encodes all-day events as local midnight through 23:59:59.
+        """
+        start = self.naive_datetime_start
+        end = self.naive_datetime_end
+        return (
+            start.hour == 0
+            and start.minute == 0
+            and start.second == 0
+            and end.hour == 23
+            and end.minute == 59
+            and end.second == 59
+        )
